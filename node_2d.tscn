@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcojsel3ku6rj"]
+[gd_scene load_steps=9 format=3 uid="uid://dcojsel3ku6rj"]
 
 [ext_resource type="Texture2D" uid="uid://drgwdwhfpb7xe" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://tinv1ke54cin" path="res://character_body_2d_2.gd" id="1_epypp"]
+[ext_resource type="Script" uid="uid://bd1siin2xnete" path="res://bala.gd" id="3_epypp"]
+[ext_resource type="Script" uid="uid://j4bmsmjnmwy8" path="res://area_2d.gd" id="4_0hol4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0e48y"]
 
@@ -10,6 +12,9 @@ size = Vector2(1158, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(49, 20)
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,9 +33,21 @@ script = ExtResource("1_epypp")
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D2"]
-rotation = 0.0016898517
 texture = ExtResource("1_0e48y")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(169, 372, 877, 383, 887, 492, 169, 489)
+[node name="bala" type="CharacterBody2D" parent="."]
+script = ExtResource("3_epypp")
+
+[node name="Area2D" type="Area2D" parent="bala"]
+script = ExtResource("4_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bala/Area2D"]
+position = Vector2(710.5, 308)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="Icon" type="Sprite2D" parent="bala/Area2D"]
+position = Vector2(712.5, 308.5)
+scale = Vector2(0.5234376, 0.27343756)
+texture = ExtResource("1_0e48y")
+
+[connection signal="body_entered" from="bala/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]

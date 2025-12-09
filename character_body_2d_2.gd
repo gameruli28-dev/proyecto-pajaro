@@ -9,11 +9,14 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	#vertical
+	if is_on_floor() == true:
+		velocity.x -= velocity.x * 0.03
 	
 	if Input.is_action_just_pressed("mover_arriba"):
 		velocity.y = JUMP_VELOCITY
 	elif is_on_floor() == false:
 		velocity += get_gravity() * delta
+	
 	else:
 		velocity.y = 0
 	# Get the input direction and handle the movement/deceleration.
@@ -31,3 +34,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("tung tung tung saur")
+	pass # Replace with function body.
