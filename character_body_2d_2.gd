@@ -16,10 +16,12 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("mover_izquierda", "mover_derecha")
 	if direction:
-		SPEED = SPEED * 0.8 + 10
+		SPEED = SPEED + 300
 		velocity.x = direction * SPEED
+		SPEED = pow(2,1/SPEED)
 	else:
-		SPEED = SPEED * 0.8 - 10
+		SPEED = pow(2,1/SPEED)
+		print(SPEED)
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
