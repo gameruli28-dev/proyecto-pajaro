@@ -10,7 +10,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	#vertical
 	if is_on_floor() == true:
-		velocity.x -= velocity.x * 0.03
+		velocity.x -= velocity.x * 0.05
 	
 	if Input.is_action_just_pressed("mover_arriba"):
 		velocity.y = JUMP_VELOCITY
@@ -36,5 +36,5 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("tung tung tung saur")
+	print ("tung")
 	pass # Replace with function body.

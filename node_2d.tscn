@@ -2,19 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://drgwdwhfpb7xe" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://tinv1ke54cin" path="res://character_body_2d_2.gd" id="1_epypp"]
-[ext_resource type="Script" uid="uid://bd1siin2xnete" path="res://bala.gd" id="3_epypp"]
+[ext_resource type="Script" uid="uid://m8tcq85sod17" path="res://poste.gd" id="3_0hol4"]
 [ext_resource type="Script" uid="uid://j4bmsmjnmwy8" path="res://area_2d.gd" id="4_0hol4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0e48y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
-size = Vector2(1158, 30)
+size = Vector2(1555, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(120, 120)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(49, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hol4"]
+radius = 12.0
+height = 218.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,31 +24,46 @@ position = Vector2(163, 652)
 physics_material_override = SubResource("PhysicsMaterial_0e48y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(407, 5)
+position = Vector2(436, 25)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(435, -804)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1120, -600)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-300, -563)
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_epypp")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 script = ExtResource("1_epypp")
 
-[node name="colision" type="CollisionShape2D" parent="CharacterBody2D2"]
-shape = SubResource("RectangleShape2D_0e48y")
-
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D2"]
 texture = ExtResource("1_0e48y")
 
-[node name="bala" type="CharacterBody2D" parent="."]
-script = ExtResource("3_epypp")
+[node name="colision" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("RectangleShape2D_0e48y")
 
-[node name="Area2D" type="Area2D" parent="bala"]
+[node name="poste" type="CharacterBody2D" parent="."]
+script = ExtResource("3_0hol4")
+
+[node name="Area2D" type="Area2D" parent="poste"]
 script = ExtResource("4_0hol4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bala/Area2D"]
-position = Vector2(710.5, 308)
-shape = SubResource("RectangleShape2D_0hol4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poste"]
+position = Vector2(-0.49996948, 0.3125)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0hol4")
 
-[node name="Icon" type="Sprite2D" parent="bala/Area2D"]
-position = Vector2(712.5, 308.5)
-scale = Vector2(0.5234376, 0.27343756)
+[node name="Icon" type="Sprite2D" parent="poste"]
+position = Vector2(-1.4999084, 1.3125153)
+scale = Vector2(1.7109381, 0.19238283)
 texture = ExtResource("1_0e48y")
 
-[connection signal="body_entered" from="bala/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="poste/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]
