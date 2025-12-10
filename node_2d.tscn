@@ -56,6 +56,9 @@ script = ExtResource("3_0hol4")
 [node name="Area2D" type="Area2D" parent="poste"]
 script = ExtResource("4_0hol4")
 
+[node name="Area2D2" type="Area2D" parent="poste"]
+script = ExtResource("4_0hol4")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="poste"]
 position = Vector2(-0.49996948, 0.3125)
 rotation = 1.5707964
@@ -67,3 +70,4 @@ scale = Vector2(1.7109381, 0.19238283)
 texture = ExtResource("1_0e48y")
 
 [connection signal="body_entered" from="poste/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="poste/Area2D2" to="CharacterBody2D2" method="_on_area_2d_body_entered"]
