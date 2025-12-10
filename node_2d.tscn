@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcojsel3ku6rj"]
 
-[ext_resource type="Texture2D" uid="uid://drgwdwhfpb7xe" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://tinv1ke54cin" path="res://character_body_2d_2.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://o46bfupclg2q" path="res://golondrina1_x48.png" id="2_0e48y"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0e48y"]
 
@@ -28,8 +28,9 @@ script = ExtResource("1_epypp")
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D2"]
-rotation = 0.0016898517
-texture = ExtResource("1_0e48y")
+texture_filter = 1
+scale = Vector2(2.5572197, 2.5572197)
+texture = ExtResource("2_0e48y")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
